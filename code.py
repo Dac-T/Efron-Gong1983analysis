@@ -101,7 +101,7 @@ def massn(x): return x/x.shape[0]
 #bootstrap sample
 def bootsampling(x):
 	xnew = x
-	maxval = int(x.shape[0]/3)
+	maxval = 1+int(x.shape[0]/5)
 	a = 0
 	b = 0
 	while b < x.shape[0]:
@@ -132,8 +132,10 @@ def signorm(x):
 	return sign
 
 B = 1000
-#print(sigbootstrap(xschool, B))
-#print(signorm(xschool))
+print(massn(xschool))
+print(bootsampling(massn(xschool)))
+print('sigma B =',sigbootstrap(xschool, B))
+print('sigma norm =',signorm(xschool))
 plt.hist(bootrep(xschool,B)-np.mean(bootrep(xschool,B)), bins = 15 )
 plt.title('Histogram of B ={} bootstrap replications'.format(B) )
 plt.show()
@@ -161,7 +163,7 @@ def sigjackknife(x):
 	sig = np.sqrt((n-1)*np.sum((stat-meanstat)**2)/n)
 	return sig
 
-#print(sigjackknife(xschool))
+print('sigma jack =',sigjackknife(xschool))
 
 #_____________________________________________________________________
 # 7. MORE COMPLICATED DATA SETS
@@ -195,6 +197,6 @@ def sigbootstrap2samples(X, Y, B):
 	return(sigbootchap2)
 
 #Hodges_Lehmann shift estimate
-#print(sigbootstrap2samples(F,G,B))
+print('sigma B2 =',sigbootstrap2samples(F,G,B))
 
 

@@ -73,8 +73,11 @@ def bootstd(X,n):
 xschool = np.array([[576,3.39],[635,3.3],[558,2.81],[578,3.03],[666,3.44],[580,3.07],[555,3],[661,3.43],[651,3.36],[605,3.13],[653,3.12],[575,2.74],[545,2.46],[572,2.88],[594,2.96]], dtype = np.float64)
 
 #fig. 1
-#plt.plot(xschool[:,0], xschool[:,1], 'ro')
-#plt.show()
+plt.plot(xschool[:,0], xschool[:,1], 'ro')
+plt.title('Law school data (Efron 1979B)')
+plt.xlabel('LSAT')
+plt.ylabel('GPA')
+plt.show()
 
 #pearson's corrcoeff
 def pcorco(x):
@@ -109,14 +112,18 @@ def bootsampling(x):
 	return xnew
 
 #bootstrap estimate of sigma(F)
+
+def bootrep(x,B):
+	bootre = np.zeros(B)
+	for i in range(B):
+		bootre[i] = pcorco(bootsampling(massn(x)))
+
+	return bootre
+
 def sigbootstrap(x, B):
 
-	bootrep = np.zeros(B)
-	for i in range(B):
-		bootrep[i] = pcorco(bootsampling(massn(x)))
-
 	#EQ 11
-	sigbootchap = np.sqrt(np.sum((bootrep - np.mean(bootrep))**2)/(B-1))
+	sigbootchap = np.sqrt(np.sum((bootrep(x,B) - np.mean(bootrep(x,B)))**2)/(B-1))
 
 	return(sigbootchap)
 
@@ -124,10 +131,12 @@ def signorm(x):
 	sign = (1-pcorco(x)**2)/np.sqrt(x.shape[0]-3)
 	return sign
 
-#print(sigbootstrap(xschool, 1000))
-#print(sign(xschool))
-#plt.hist(bootrep-meanbootrep)
-#plt.show()
+B = 1000
+#print(sigbootstrap(xschool, B))
+#print(signorm(xschool))
+plt.hist(bootrep(xschool,B)-np.mean(bootrep(xschool,B)), bins = 15 )
+plt.title('Histogram of B ={} bootstrap replications'.format(B) )
+plt.show()
 
 #_____________________________________________________________________
 # 3. THE JACKKNIFE
@@ -156,6 +165,7 @@ def sigjackknife(x):
 
 #_____________________________________________________________________
 # 7. MORE COMPLICATED DATA SETS
+#DOESN'T WORK
 #new data sets
 B = 100
 F = random.uniform(size=6)
@@ -184,9 +194,7 @@ def sigbootstrap2samples(X, Y, B):
 
 	return(sigbootchap2)
 
-
-print(sigbootstrap2samples(F,G,B))
 #Hodges_Lehmann shift estimate
+#print(sigbootstrap2samples(F,G,B))
 
-#_____________________________________________________________________
-# 8. CROSS-VALIDATION ?
+

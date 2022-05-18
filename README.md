@@ -1,8 +1,9 @@
-## Efron-Gong1983analysis
-A master project (PCBS)
+# Efron-Gong1983analysis
+The goal is to reproduces the main results of _Efron and Gong, The American Statistician, 1983_ for a master project (PCBS2, Cogmaster, ENS-Ulm).
+The paper take a look at different nonparametrical strategies to determinate the standard deviation of a data set with an unknown probability of distribution.
 
-# Results
-The file code.py reproduces the main results of Efron and Gong. You can comment or decomment the printing of the different estimates of standard error. The code as it is only print figures.
+## Code and Modularity
+The file code.py reproduces the main results of Efron and Gong. You can comment or decomment the printing of the different estimates of standard error. 
 
-# Modularity
-You can reproduce with this code the bootstrap replication and the jacknife estimation for any set of datas, you just have to write them in the file.
+## Results
+![Figure 1](C:\Users\Bob\Efron-Gong1983analysis/figure_1.png)

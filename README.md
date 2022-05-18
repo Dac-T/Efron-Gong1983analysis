@@ -6,4 +6,4 @@ The paper take a look at different nonparametrical strategies to determinate the
 The file code.py reproduces the main results of Efron and Gong. You can comment or decomment the printing of the different estimates of standard error. 
 
 ## Results
-![Figure 1](C:\Users\Bob\Efron-Gong1983analysis/Figure_1.png)
+![Figure 1]((C:\Users\Bob\Efron-Gong1983analysis/Figure_1.png?raw=true "Figure_1"))

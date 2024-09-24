@@ -13,11 +13,11 @@ I computed the bootstrap estimate $\sigma_B$, the jackknife estimate $\sigma_J$ 
 Running the code gave me those values:
 - $\sigma_B = 0.121$
 - $\sigma_J = 0.126$
-- $\sigma_Norm = 0.117$
+- $\sigma_{Norm} = 0.117$
 
 The paper gave for this datasample:
 - $\sigma_B = 0.127$
-- $\sigma_Norm = 0.115$
+- $\sigma_{Norm} = 0.115$
 
 Therefore I noted that the simulated results were consistents with those published, and I reproduced the figure 2, that displays an histogram of 1000 bootstrap replication, to observe a high similarity in the figures's shape.
 
@@ -25,4 +25,4 @@ Therefore I noted that the simulated results were consistents with those publish
 
 
 ## To be extended?
-It would be have been interesting to statistically study deeper the possibles results for bootstrap, modelize uniform smoothed bootstrap and bend over infinitesimal jackknife and cross-validation.
+It would have been interesting to deeper study the possibles results for bootstrap, modelize uniform smoothed bootstrap and bend over infinitesimal jackknife and cross-validation.
